@@ -1,0 +1,79 @@
+# Trading Bot Configuration
+bot:
+  name: "CryptoTrader Pro"
+  version: "1.0.0"
+  
+# Exchange Configuration
+exchange:
+  default: "binance"
+  api_key: ""  # Set via environment variable
+  api_secret: ""  # Set via environment variable
+  sandbox: true  # Use testnet for development
+  
+# Trading Configuration
+trading:
+  base_currency: "USDT"
+  max_positions: 5
+  max_allocation_per_trade: 0.2  # 20% of portfolio per trade
+  min_trade_amount: 10  # Minimum trade amount in base currency
+  
+# Risk Management
+risk:
+  stop_loss: 0.05  # 5% stop loss
+  take_profit: 0.15  # 15% take profit
+  max_daily_loss: 0.1  # 10% max daily loss
+  position_sizing: "kelly"  # kelly, fixed, volatility
+  
+# Strategies
+strategies:
+  sma_crossover:
+    enabled: true
+    short_window: 20
+    long_window: 50
+    
+  rsi_strategy:
+    enabled: true
+    period: 14
+    oversold: 30
+    overbought: 70
+    
+  macd_strategy:
+    enabled: true
+    fast_period: 12
+    slow_period: 26
+    signal_period: 9
+    
+  bollinger_bands:
+    enabled: true
+    period: 20
+    std_dev: 2
+    
+# Backtesting
+backtest:
+  start_date: "2023-01-01"
+  end_date: "2024-01-01"
+  initial_capital: 10000
+  commission: 0.001  # 0.1% commission
+  
+# Data Sources
+data:
+  timeframes: ["1m", "5m", "15m", "1h", "4h", "1d"]
+  symbols: ["BTC/USDT", "ETH/USDT", "ADA/USDT", "DOT/USDT", "SOL/USDT"]
+  update_interval: 60  # seconds
+  
+# Database
+database:
+  path: "data/crypto_trader.db"
+  
+# Logging
+logging:
+  level: "INFO"
+  file: "logs/trader.log"
+  max_size: "10MB"
+  backup_count: 5
+  
+# Web Interface
+web:
+  host: "0.0.0.0"
+  port: 8080
+  debug: true
